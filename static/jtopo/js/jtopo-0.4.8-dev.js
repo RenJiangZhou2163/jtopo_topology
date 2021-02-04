@@ -1100,7 +1100,7 @@
             }(), setTimeout(function () {
                 stage.mousewheel(function (a) {
                     var b = null == a.wheelDelta ? a.detail : a.wheelDelta;
-                    null != this.wheelZoom && (b > 0 ? this.zoomIn(this.wheelZoom) : this.zoomOut(this.wheelZoom))
+                    null != this.wheelZoom && (b > 0 ? this.zoomOut(this.wheelZoom) : this.zoomIn(this.wheelZoom))  // 鼠标中键上下滚动与放大缩小的关系
                 }), stage.paint()
             }, 300), setTimeout(function () {
                 stage.paint()
