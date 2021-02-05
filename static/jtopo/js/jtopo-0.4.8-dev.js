@@ -229,6 +229,7 @@
                                 c.lineWidth = editor.config.linkDefaultWidth;
                                 c.shadowOffsetX = editor.config.shadowOffsetX;
                                 c.shadowOffsetY = editor.config.shadowOffsetY;
+                                c.bundleGap = editor.config.linkbundleGap; // 线条之间的间隔
                             }
                         } else if ("container" == d) {
                             if (a["childNodes"]) {
@@ -402,6 +403,7 @@
                                 c.lineWidth = editor.config.linkDefaultWidth;
                                 c.shadowOffsetX = editor.config.shadowOffsetX;
                                 c.shadowOffsetY = editor.config.shadowOffsetY;
+                                c.bundleGap = editor.config.linkbundleGap; // 线条之间的间隔
                             }
                         } else if ("container" == d) {
                             if (a["childNodes"]) {

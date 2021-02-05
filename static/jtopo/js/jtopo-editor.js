@@ -197,6 +197,7 @@ function TopologyEditor() {
         linkDefaultWidth: 1,                 // 连线宽度
         linkOffsetGap: 40,                   // 折线拐角处的长度
         linkDirection: 'horizontal',        // 折线的方向
+        linkbundleGap:5,                    // 线条之间的间隔
         // Container属性
         containerAlpha: 1,
         containerStrokeColor: '22,124,255',
