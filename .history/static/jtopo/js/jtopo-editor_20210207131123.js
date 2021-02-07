@@ -615,15 +615,21 @@ TopologyEditor.prototype.init = function (topologyGuid, backImg, topologyJson) {
         } else {
             // 单击舞台空白处
             $('.node-tooltip').css('display', 'none')
+            this.stage.mode = this.stageMode
+            console.log("scene 鼠标单击")
             return
         }
 
         // 单击某个节点
-        if (event.target != null && event.target instanceof JTopo.Node && event.target.nodeTooltip && editor.stageMode !== 'edit') {
-            let currentNodeParams = self.currentNode.nodeParams
-            if (currentNodeParams && currentNodeParams.jumpRoute) {
-                window.open(currentNodeParams.jumpRoute)
-            }
+        // if (event.target != null && event.target instanceof JTopo.Node && event.target.nodeTooltip && editor.stageMode !== 'edit') {
+        //     let currentNodeParams = self.currentNode.nodeParams
+        //     if (currentNodeParams && currentNodeParams.jumpRoute) {
+        //         window.open(currentNodeParams.jumpRoute)
+        //     }
+        //     console.log("鼠标单击某个节点")
+        if (event.target != null && event.target instanceof JTopo.Node && editor.stageMode !== 'edit') {
+            console.log("鼠标单击某个节点")
+            this.stage.mode = this.stageMode
         } else {
             // 单击别的地方
             $('.node-tooltip').css('display', 'none')

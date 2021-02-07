@@ -197,7 +197,7 @@ function TopologyEditor() {
         linkDefaultWidth: 1,                 // 连线宽度
         linkOffsetGap: 40,                   // 折线拐角处的长度
         linkDirection: 'horizontal',        // 折线的方向
-        linkbundleGap:5,                    // 线条之间的间隔
+        linkbundleGap: 5,                    // 线条之间的间隔
         // Container属性
         containerAlpha: 1,                      // 容器透明度,取值范围[0-1]
         // containerStrokeColor: '0,0,0',
@@ -287,7 +287,7 @@ TopologyEditor.prototype.initMenus = function () {
                 break
             case '节点文字':
                 return
-            default :
+            default:
 
         }
         // 关闭菜单
@@ -363,7 +363,7 @@ TopologyEditor.prototype.initMenus = function () {
                     self.currentNode.textPosition = 'Bottom_Right'
                     self.utils.saveNodeNewState()
                     break
-                default :
+                default:
             }
             $('div[id$=\'-menu\']').hide()
         }
@@ -380,7 +380,7 @@ TopologyEditor.prototype.initMenus = function () {
             case '删除连线':
                 editor.utils.deleteLine()
                 break
-            default :
+            default:
         }
     })
 
@@ -619,15 +619,20 @@ TopologyEditor.prototype.init = function (topologyGuid, backImg, topologyJson) {
         }
 
         // 单击某个节点
-        if (event.target != null && event.target instanceof JTopo.Node && event.target.nodeTooltip && editor.stageMode !== 'edit') {
-            let currentNodeParams = self.currentNode.nodeParams
-            if (currentNodeParams && currentNodeParams.jumpRoute) {
-                window.open(currentNodeParams.jumpRoute)
-            }
+        // if (event.target != null && event.target instanceof JTopo.Node && event.target.nodeTooltip && editor.stageMode !== 'edit') {
+        //     let currentNodeParams = self.currentNode.nodeParams
+        //     if (currentNodeParams && currentNodeParams.jumpRoute) {
+        //         window.open(currentNodeParams.jumpRoute)
+        //     }
+        //     console.log("鼠标单击某个节点")
+        if (event.target != null && event.target instanceof JTopo.Node && editor.stageMode !== 'edit') {
+            console.log("鼠标单击某个节点")
+            this.stage.mode = this.stageMode
         } else {
             // 单击别的地方
             $('.node-tooltip').css('display', 'none')
-
+            this.stage.mode = this.stageMode
+            console.log("scene 鼠标单击")
         }
     })
 
@@ -1198,22 +1203,22 @@ editor.utils = {
     showInFullScreen: function (element, method) {
         let usablePrefixMethod;
         ['webkit', 'moz', 'ms', 'o', ''].forEach(function (prefix) {
-                if (usablePrefixMethod) {
-                    return
-                }
-                if (prefix === '') {
-                    // 无前缀，方法首字母小写
-                    // method = method.slice(0, 1).toLowerCase() + method.slice(1)
-                }
-                let typePrefixMethod = typeof element[prefix + method]
-                if (typePrefixMethod + '' !== 'undefined') {
-                    if (typePrefixMethod === 'function') {
-                        usablePrefixMethod = element[prefix + method]()
-                    } else {
-                        usablePrefixMethod = element[prefix + method]
-                    }
+            if (usablePrefixMethod) {
+                return
+            }
+            if (prefix === '') {
+                // 无前缀，方法首字母小写
+                // method = method.slice(0, 1).toLowerCase() + method.slice(1)
+            }
+            let typePrefixMethod = typeof element[prefix + method]
+            if (typePrefixMethod + '' !== 'undefined') {
+                if (typePrefixMethod === 'function') {
+                    usablePrefixMethod = element[prefix + method]()
+                } else {
+                    usablePrefixMethod = element[prefix + method]
                 }
             }
+        }
         )
         return usablePrefixMethod
     },
